@@ -57,8 +57,8 @@ class Snake:
             return False
 
     def tail_check(self):
-        for n in range(len(self.segments) - 1, 1, -1):
-            if self.head.distance(self.segments[n]) < 20:
+        for segment in self.segments[2:]:
+            if self.head.distance(segment) < 20:
                 self.tail_hit = True
                 break
 
