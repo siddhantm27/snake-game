@@ -1,7 +1,5 @@
 from turtle import Turtle, Screen
 from food import Food
-import math
-import random
 import time
 from snake import Snake
 from score import Score
