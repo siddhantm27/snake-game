@@ -26,24 +26,10 @@ while game_on:
     time.sleep(0.1)
     snake.move()
 
+    if snake.head.distance(food) <= 15:
+        food.refresh()
+        snake.add_segment()
+
 screen.exitonclick()
 
-# food = create_food()
-# while no_wall:
-#     for segment in segments:
-#         segment.penup()
-#         segment.forward(20)
-#     time.sleep(0.1)
-#     screen.update()
-#
-#     first_turtle = segments[0]
-#     # if check_food(first_turtle, food):
-#     #     segments = add_segment(segments)
-#     #     food.ht()
-#     #     food = create_food()
-#     x = first_turtle.xcor()
-#     # turn()
-#     # screen.listen()
-#     # screen.onkeypress(key="a", fun=turn_left)
-#     if x >= 230:
-#         no_wall = False
+

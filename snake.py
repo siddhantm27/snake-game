@@ -1,4 +1,5 @@
 from turtle import Turtle
+import math
 
 POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
@@ -17,6 +18,20 @@ class Snake:
             segment.penup()
             segment.goto(position)
             self.segments.append(segment)
+
+    def add_segment(self):
+        segment = Turtle("square")
+        segment.color("white")
+        segment.speed("fastest")
+        segment.penup()
+        prev_t = self.segments[-1]
+        prev_angle = prev_t.heading()
+        x = prev_t.xcor()
+        y = prev_t.ycor()
+        new_x = x - 20 * math.cos(prev_angle)
+        new_y = y - 20 * math.sin(prev_angle)
+        segment.goto(new_x, new_y)
+        self.segments.append(segment)
 
     def move(self):
         for n in range(len(self.segments) - 1, 0, -1):
