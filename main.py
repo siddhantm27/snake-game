@@ -14,8 +14,11 @@ snake = Snake()
 food = Food()
 
 screen.listen()
-screen.onkeypress(key="a", fun=snake.turn_left)
-screen.onkeypress(key="d", fun=snake.turn_right)
+screen.onkeypress(key="Left", fun=snake.go_left)
+screen.onkeypress(key="Right", fun=snake.go_right)
+screen.onkeypress(key="Up", fun=snake.go_up)
+screen.onkeypress(key="Down", fun=snake.go_down)
+
 game_on = True
 
 while game_on:
@@ -24,7 +27,6 @@ while game_on:
     snake.move()
 
 screen.exitonclick()
-
 
 # food = create_food()
 # while no_wall:
