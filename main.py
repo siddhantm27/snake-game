@@ -27,19 +27,18 @@ while game_on:
     time.sleep(0.1)
     snake.move()
 
-    snake.tail_check()
-    if snake.tail_hit:
-        game_on = False
-        score.game_over()
+    tail_hit = snake.tail_check()
+    wall_hit = snake.wall_check()
+
+    if tail_hit or wall_hit:
+        snake.new_game()
+        snake.head = snake.segments[0]
+        score.reset_score()
+        time.sleep(1)
 
     if snake.head.distance(food) <= 15:
         food.refresh()
         snake.add_segment()
         score.add_score()
-
-    wall_hit = snake.wall_check()
-    if wall_hit:
-        game_on = False
-        score.game_over()
 
 screen.exitonclick()

@@ -10,7 +10,6 @@ class Snake:
         self.segments = []
         self.create_body()
         self.head = self.segments[0]
-        self.tail_hit = False
 
     def create_body(self):
         for position in POSITIONS:
@@ -42,6 +41,11 @@ class Snake:
             self.segments[n].goto(next_x, next_y)
         self.head.forward(20)
 
+    def clear_snake(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+
     def wall_check(self):
         x = self.head.xcor()
         y = self.head.ycor()
@@ -59,8 +63,8 @@ class Snake:
     def tail_check(self):
         for segment in self.segments[2:]:
             if self.head.distance(segment) < 20:
-                self.tail_hit = True
-                break
+                return True
+        return False
 
     def go_left(self):
         if self.head.heading() != 0:
@@ -77,3 +81,7 @@ class Snake:
     def go_down(self):
         if self.head.heading() != 90:
             self.head.setheading(270)
+
+    def new_game(self):
+        self.clear_snake()
+        self.create_body()
