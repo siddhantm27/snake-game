@@ -12,7 +12,8 @@ class Score:
         self.score_t.pendown()
         self.score_t.ht()
         self.current_score = 0
-        self.high_score = 0
+        with open("high_score.txt") as highscore:
+            self.high_score = int(highscore.read())
 
     def add_score(self):
         self.current_score += 1
@@ -24,6 +25,8 @@ class Score:
     def reset_score(self):
         if self.current_score > self.high_score:
             self.high_score = self.current_score
+            with open("high_score.txt", mode="w") as file:
+                file.write(f"{self.current_score}")
         self.current_score = 0
 
     # def game_over(self):
